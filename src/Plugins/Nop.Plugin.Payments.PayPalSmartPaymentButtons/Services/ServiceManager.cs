@@ -246,14 +246,14 @@ namespace Nop.Plugin.Payments.PayPalSmartPaymentButtons.Services
                     ["client-id"] = settings.ClientId,
                     ["currency"] = (await _currencyService.GetCurrencyByIdAsync(_currencySettings.PrimaryStoreCurrencyId))?.CurrencyCode?.ToUpper(),
                     ["intent"] = settings.PaymentType.ToString().ToLower(),
-                    ["commit"] = false.ToString().ToLower(),
+                    //["commit"] = false.ToString().ToLower(), Przelewy 24
                     ["vault"] = false.ToString().ToLower(),
                     ["debug"] = false.ToString().ToLower(),
                     //["components"] = "buttons", //default value
                     //["merchant-id"] = null, //not used
                     //["integration-date"] = null, //not used (YYYY-MM-DD format)
                     //["buyer-country"] = null, //available in the sandbox only
-                    //["locale"] = null, //PayPal auto detects it
+                    ["locale"] = "pl_PL", //PayPal auto detects it
                 };
                 if (!string.IsNullOrEmpty(settings.DisabledFunding))
                     parameters["disable-funding"] = settings.DisabledFunding;
