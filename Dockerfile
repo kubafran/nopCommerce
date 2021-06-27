@@ -74,6 +74,9 @@ RUN mkdir bin
 RUN mkdir logs  
                                                             
 COPY --from=build /app/published .
+RUN ls -all ./App_Data
+COPY ./src/Presentation/Nop.Web/App_Data/ ./App_Data
+RUN ls -all ./App_Data
 
 # call entrypoint script instead of dotnet                            
 ENTRYPOINT "/entrypoint.sh"
